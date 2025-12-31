@@ -1,5 +1,5 @@
 Name:           hyprwire
-Version:        0.1.1
+Version:        0.2.1
 Release:        %autorelease
 Summary:        A fast and consistent wire protocol for IPC
 
@@ -17,6 +17,12 @@ BuildRequires:  pkgconfig(hyprutils)
 BuildRequires:  pkgconfig(libffi)
 BuildRequires:  pkgconfig(pugixml)
 
+%if 0%{?rhel} == 10
+BuildRequires:  gcc-toolset-15
+BuildRequires:  gcc-toolset-15-gcc-c++
+BuildRequires:  gcc-toolset-15-annobin-plugin-gcc
+%endif
+
 %description
 %{summary}.
 
@@ -30,19 +36,29 @@ Development files for %{name}.
 %autosetup -p1
 
 %build
+
+%if 0%{?rhel} == 10
+source /usr/lib/gcc-toolset/15-env.source
+%endif
+
 %cmake -GNinja \
     -DCMAKE_BUILD_TYPE=Release \
     -DBUILD_TESTING=OFF
 %cmake_build
 
 %install
+
+%if 0%{?rhel} == 10
+source /usr/lib/gcc-toolset/15-env.source
+%endif
+
 %cmake_install
 
 %files
 %license LICENSE
 %doc README.md
 %{_libdir}/lib%{name}.so.%{version}
-%{_libdir}/lib%{name}.so.1
+%{_libdir}/lib%{name}.so.2
 
 %files devel
 %{_bindir}/%{name}-scanner

@@ -1,8 +1,8 @@
-%global hyprland_commit ff50dc36e912b6ad764802d51be838bc7f6ed323
+%global hyprland_commit 9b93d621b1019e8378b8a902edb7ba8dd8baf204
 %global hyprland_shortcommit %(c=%{hyprland_commit}; echo ${c:0:7})
-%global bumpver 58
-%global commits_count 6545
-%global commit_date Wed Oct 29 00:53:42 2025
+%global bumpver 2
+%global commits_count 6765
+%global commit_date Thu Jan 01 03:48:23 2026
 
 %global protocols_commit 3a5c2bda1c1a4e55cc1330c782547695a93f05b2
 %global protocols_shortcommit %(c=%{protocols_commit}; echo ${c:0:7})
@@ -13,7 +13,7 @@
 %global libxkbcommon_version 1.11.0
 
 Name:           hyprland-git
-Version:        0.51.1%{?bumpver:^%{bumpver}.git%{hyprland_shortcommit}}
+Version:        0.53.0%{?bumpver:^%{bumpver}.git%{hyprland_shortcommit}}
 Release:        %autorelease
 Summary:        Dynamic tiling Wayland compositor that doesn't sacrifice on its looks
 
@@ -53,6 +53,7 @@ hyprdeps = {
     "pkgconfig(hyprgraphics)",
     "pkgconfig(hyprlang)",
     "pkgconfig(hyprutils)",
+    "pkgconfig(hyprwire)",
     "pkgconfig(hyprwayland-scanner)",
     "pkgconfig(libdisplay-info)",
     "pkgconfig(libdrm)",
@@ -101,6 +102,8 @@ end
 
 %printbdeps
 
+BuildRequires:  muParser-devel
+
 %if 0%{?rhel} == 10
 BuildRequires:  gcc-toolset-15
 BuildRequires:  gcc-toolset-15-gcc-c++
@@ -126,7 +129,7 @@ Requires:       xorg-x11-server-Xwayland%{?_isa}
 Requires:       aquamarine%{?_isa} >= 0.9.2
 Requires:       hyprcursor%{?_isa} >= 0.1.13
 Requires:       hyprgraphics%{?_isa} >= 0.1.6
-Requires:       hyprlang%{?_isa} >= 0.6.3
+Requires:       hyprlang%{?_isa} >= 0.6.7
 Requires:       hyprutils%{?_isa} >= 0.8.4
 
 %{lua:do
@@ -263,6 +266,7 @@ install -Dpm644 %{SOURCE4} -t %{buildroot}%{_rpmconfigdir}/macros.d
 %{_bindir}/[Hh]yprland
 %{_bindir}/hyprctl
 %{_bindir}/hyprpm
+%{_bindir}/start-hyprland
 %{_datadir}/hypr/
 %{_datadir}/wayland-sessions/hyprland.desktop
 %{_datadir}/xdg-desktop-portal/hyprland-portals.conf
