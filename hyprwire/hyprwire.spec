@@ -1,5 +1,5 @@
 Name:           hyprwire
-Version:        0.2.1
+Version:        0.3.0
 Release:        %autorelease
 Summary:        A fast and consistent wire protocol for IPC
 
@@ -58,7 +58,7 @@ source /usr/lib/gcc-toolset/15-env.source
 %license LICENSE
 %doc README.md
 %{_libdir}/lib%{name}.so.%{version}
-%{_libdir}/lib%{name}.so.2
+%{_libdir}/lib%{name}.so.3
 
 %files devel
 %{_bindir}/%{name}-scanner
