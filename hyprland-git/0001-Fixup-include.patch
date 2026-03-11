@@ -1,0 +1,25 @@
+From 0338f95a3e4204ea96d45516411b20da3dfbf4dc Mon Sep 17 00:00:00 2001
+From: Dan Aloni <dan@kernelim.com>
+Date: Wed, 11 Mar 2026 10:42:49 +0200
+Subject: [PATCH] Fixup include
+
+---
+ src/render/Renderer.hpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/render/Renderer.hpp b/src/render/Renderer.hpp
+index 1d099ee35573..53aecb90b04d 100644
+--- a/src/render/Renderer.hpp
++++ b/src/render/Renderer.hpp
+@@ -13,7 +13,7 @@
+ #include "../helpers/math/Math.hpp"
+ #include "../helpers/time/Time.hpp"
+ #include "../../protocols/cursor-shape-v1.hpp"
+-#include "desktop/view/Popup.hpp"
++#include "../desktop/view/Popup.hpp"
+ #include "render/Framebuffer.hpp"
+ #include "render/Texture.hpp"
+ #include "render/pass/BorderPassElement.hpp"
+-- 
+2.47.3
+

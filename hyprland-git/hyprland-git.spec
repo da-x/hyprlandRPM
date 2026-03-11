@@ -35,6 +35,7 @@ Source0:        %{url}/releases/download/v%{version}/source-v%{version}.tar.gz
 %endif
 Source4:        macros.hyprland
 Source5:        https://github.com/xkbcommon/libxkbcommon/archive/xkbcommon-%{libxkbcommon_version}/libxkbcommon-%{libxkbcommon_version}.tar.gz
+Patch1:		0001-Fixup-include.patch
 
 %{lua:
 hyprdeps = {
@@ -104,6 +105,7 @@ end
 
 BuildRequires:  muParser-devel
 BuildRequires:  glslang-devel
+BuildRequires:  lcms2-devel
 
 %if 0%{?rhel} == 10
 BuildRequires:  gcc-toolset-15
@@ -202,7 +204,7 @@ Requires:       pkgconfig(xkbcommon)
 
 
 %prep
-%autosetup -n %{?bumpver:Hyprland-%{hyprland_commit}} %{!?bumpver:hyprland-source} -N
+%autosetup -n %{?bumpver:Hyprland-%{hyprland_commit}} %{!?bumpver:hyprland-source} -p1
 %if 0%{?fedora} < 43
 mkdir -p subprojects/libxkbcommon
 tar -xf %{SOURCE5} -C subprojects/libxkbcommon --strip=1

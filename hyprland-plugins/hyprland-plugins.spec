@@ -1,13 +1,13 @@
 %global commit0 b85a56b9531013c79f2f3846fd6ee2ff014b8960
 %global shortcommit0 %(c=%{commit0}; echo ${c:0:7})
-%global bumpver 1352
+%global bumpver 1354
 
 %global __provides_exclude_from ^(%{_libdir}/hyprland/.*\\.so)$
 
+# Disabled: borders-plus-plus hyprbars
+
 %global plugins %{shrink:
-                borders-plus-plus
                 csgo-vulkan-fix
-                hyprbars
                 hyprexpo
                 hyprfocus
                 hyprscrolling
@@ -44,6 +44,9 @@ Source:         %{url}/archive/%{commit0}/%{name}-%{commit0}.tar.gz
 BuildRequires:  gcc-c++
 BuildRequires:  meson
 BuildRequires:  %{hyprlandpkg}-devel
+BuildRequires:  muParser-devel
+BuildRequires:  glslang-devel
+BuildRequires:  lcms2-devel
 
 Requires:       %{hyprlandpkg} = %_hyprland_version
 
@@ -75,7 +78,7 @@ Requires:      %{hyprlandpkg} = %_hyprland_version\
 for plugin in %{plugins}
 do
 pushd $plugin
-%meson --libdir=%{_libdir}/hyprland
+%meson --libdir=%{_libdir}/hyprland -Dcpp_args="-I/usr/include/hyprland/src" -Dc_args="-I/usr/include/hyprland/src"
 %meson_build
 popd
 done
