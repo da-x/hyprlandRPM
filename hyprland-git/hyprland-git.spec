@@ -1,8 +1,8 @@
-%global hyprland_commit be96e06a965b9ec7c9273234b6299f35626f9e64
+%global hyprland_commit 2c4852e31f1cc974164fdd1bf383a67c26cafe44
 %global hyprland_shortcommit %(c=%{hyprland_commit}; echo ${c:0:7})
-%global bumpver 2
-%global commits_count 7033
-%global commit_date Tue Mar 17 02:10:53 2026
+%global bumpver 3
+%global commits_count 7065
+%global commit_date Fri Mar 27 02:08:56 2026
 
 %global protocols_commit 3a5c2bda1c1a4e55cc1330c782547695a93f05b2
 %global protocols_shortcommit %(c=%{protocols_commit}; echo ${c:0:7})
@@ -69,7 +69,7 @@ hyprdeps = {
     "pkgconfig(tomlplusplus)",
     "pkgconfig(uuid)",
     "pkgconfig(wayland-client)",
-    "pkgconfig(wayland-protocols) >= 1.45",
+    "pkgconfig(wayland-protocols) >= 1.47",
     "pkgconfig(wayland-scanner)",
     "pkgconfig(wayland-server)",
     "pkgconfig(xcb-composite)",
@@ -132,7 +132,7 @@ Requires:       aquamarine%{?_isa} >= 0.9.2
 Requires:       hyprcursor%{?_isa} >= 0.1.13
 Requires:       hyprgraphics%{?_isa} >= 0.1.6
 Requires:       hyprlang%{?_isa} >= 0.6.7
-Requires:       hyprutils%{?_isa} >= 0.8.4
+Requires:       hyprutils%{?_isa} >= 0.11.1
 
 %{lua:do
 if string.match(rpm.expand('%{name}'), '%-git$') then
