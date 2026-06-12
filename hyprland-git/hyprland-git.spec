@@ -109,7 +109,7 @@ BuildRequires:  lcms2-devel
 %if 0%{?rhel} == 10
 BuildRequires:  gcc-toolset-15
 BuildRequires:  gcc-toolset-15-gcc-c++
-BuildRequires:  gcc-toolset-15-annobin-plugin-gcc
+BuildRequires:  gcc-toolset-15-gcc-plugin-annobin
 %endif
 
 %if 0%{?fedora} < 43
