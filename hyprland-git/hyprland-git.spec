@@ -120,6 +120,9 @@ BuildRequires:  pkgconfig(xcb-xkb)
 BuildRequires:  libxml2-devel
 %endif
 
+BuildRequires:  readline-devel
+BuildRequires:  lua-devel
+
 # udis86 is packaged in Fedora, but the copy bundled here is actually a
 # modified fork.
 Provides:       bundled(udis86) = 1.7.2^1.%{udis86_shortcommit}

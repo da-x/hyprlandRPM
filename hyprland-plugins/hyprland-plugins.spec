@@ -3,16 +3,15 @@
 %global bumpver 1357
 
 %global __provides_exclude_from ^(%{_libdir}/hyprland/.*\\.so)$
+%global debug_package %{nil}
 
 # Disabled: borders-plus-plus hyprbars
 
 %global plugins %{shrink:
                 csgo-vulkan-fix
-                hyprexpo
+		borders-plus-plus
                 hyprfocus
-                hyprscrolling
-                hyprwinwrap
-                xtra-dispatchers
+		hyprbars
 }
 
 %if !%{defined build_for}
@@ -47,6 +46,7 @@ BuildRequires:  %{hyprlandpkg}-devel
 BuildRequires:  muParser-devel
 BuildRequires:  glslang-devel
 BuildRequires:  lcms2-devel
+BuildRequires:  lua-devel
 
 Requires:       %{hyprlandpkg} = %_hyprland_version
 

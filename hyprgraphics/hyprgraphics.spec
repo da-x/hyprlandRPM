@@ -1,5 +1,5 @@
 Name:           hyprgraphics
-Version:        0.5.0
+Version:        0.5.1
 Release:        %autorelease -b11
 Summary:        Hyprland graphics / resource utilities
 
@@ -28,6 +28,7 @@ BuildRequires:  pkgconfig(libpng)
 BuildRequires:  pkgconfig(pangocairo)
 BuildRequires:  pkgconfig(libheif)
 BuildRequires:  pkgconfig(librsvg-2.0)
+BuildRequires:  mesa-libGL-devel
 
 %description
 %{summary}.
